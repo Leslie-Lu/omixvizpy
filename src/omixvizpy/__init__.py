@@ -4,7 +4,7 @@ omixvizpy: A Python package for omics data visualization
 This package provides tools for visualizing omics data, particularly PCA plots.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Zhen Lu"
 __email__ = "luzh29@mail2.sysu.edu.cn"
 

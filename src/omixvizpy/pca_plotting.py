@@ -6,7 +6,7 @@ with customizable covariate-based coloring and styling options.
 
 Author: Zhen Lu
 License: MIT
-Version: 0.1.0
+Version: 0.1.1
 """
 
 from typing import Optional, List, Dict, Any
@@ -145,7 +145,7 @@ def plot_pca(
     variance_explained_str1= [f'PC{i+1} ({var:.2f}% of Top {num_of_pcs} PCs)' for i, var in enumerate(variance_explained)]
     variance_explained_str2= [f'PC{i+1} ({var:.2f}%)' for i, var in enumerate(variance_explained)]
     ## fig1: bar plot of variance explained by each PC
-    plt.figure(figsize=(6, 10))
+    plt.figure(figsize=(7, 9))
     ax = plt.gca()
     fig1 = sns.barplot(
         y=list(range(0, num_of_pcs)),
@@ -168,7 +168,7 @@ def plot_pca(
     ax.xaxis.tick_top()
     if save_figs and fig_path:
         os.makedirs(fig_path, exist_ok=True)
-        plt.savefig(os.path.join(fig_path, fig1_name + ".png"), dpi=600)
+        plt.savefig(os.path.join(fig_path, fig1_name + ".png"), dpi=600, bbox_inches='tight')
     else:
         plt.show()
     plt.close()
@@ -195,7 +195,7 @@ def plot_pca(
     if cov2 is None:
         cov2 = cov1
         cov_settings[cov2] = cov_settings[cov1]
-    plt.figure(figsize=(12, 12))
+    plt.figure(figsize=(10, 10))
     ax = plt.gca()
     fig2 = sns.scatterplot(data=pca_covar_df,
                            x="PC1",
@@ -267,7 +267,7 @@ def plot_pca(
 
     if save_figs and fig_path:
         os.makedirs(fig_path, exist_ok=True)
-        plt.savefig(os.path.join(fig_path, fig2_name + ".png"), dpi=600)
+        plt.savefig(os.path.join(fig_path, fig2_name + ".png"), dpi=600, bbox_inches='tight')
     else:
         plt.show()
     plt.close()
@@ -315,7 +315,7 @@ def plot_pca(
 
     if save_figs and fig_path:
         os.makedirs(fig_path, exist_ok=True)
-        plt.savefig(os.path.join(fig_path, fig3_name + ".png"), dpi=600)
+        plt.savefig(os.path.join(fig_path, fig3_name + ".png"), dpi=600, bbox_inches='tight')
     else:
         plt.show()
     plt.close()
@@ -364,7 +364,7 @@ def plot_pca(
 
         if save_figs and fig_path:
             os.makedirs(fig_path, exist_ok=True)
-            plt.savefig(os.path.join(fig_path, fig4_name + ".png"), dpi=600)
+            plt.savefig(os.path.join(fig_path, fig4_name + ".png"), dpi=600, bbox_inches='tight')
         else:
             plt.show()
         plt.close()

@@ -122,9 +122,3 @@ If you use omixvizpy in your research, please cite:
   url={https://github.com/Leslie-Lu/omixvizpy}
 }
 ```
-
-## Changelog
-
-### v0.1.0 (2025-07-23)
-- Initial release
-- PCA plotting functionality
