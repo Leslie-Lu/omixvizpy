@@ -302,7 +302,7 @@ def plot_pca(
             for handle in legend.legend_handles:
                 handle.set_markersize(10)
             legend.set_title(legend_title_cov1)
-            legend.set_bbox_to_anchor((.975, 1))
+            legend.set_bbox_to_anchor((.975, .90))
             legend.set_frame_on(False)
             legend.set_borderaxespad(0.1)
             legend.set_loc('upper left')
@@ -347,8 +347,8 @@ def plot_pca(
                     t.set_text(l)
                 for handle in legend.legend_handles:
                     handle.set_markersize(10)
-                legend.set_title(legend_title_cov1)
-                legend.set_bbox_to_anchor((.975, 1))
+                legend.set_title(legend_title_cov2)
+                legend.set_bbox_to_anchor((.975, .90))
                 legend.set_frame_on(False)
                 legend.set_borderaxespad(0.1)
                 legend.set_loc('upper left')
