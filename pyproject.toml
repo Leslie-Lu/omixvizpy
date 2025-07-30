@@ -64,6 +64,12 @@ where = ["src"]
 [tool.setuptools.package-dir]
 "" = "src"
 
+[tool.setuptools.exclude-package-data]
+"*" = [
+    ".VenvPython313/*",
+    "*.1"
+]
+
 [tool.black]
 line-length = 88
 target-version = ['py38']

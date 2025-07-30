@@ -295,6 +295,10 @@ def plot_pca(
         fig3.axes[i, 0].set_ylabel(variance_explained_str2[i], fontsize=16, labelpad=10)
     try:
         legend = getattr(fig3, '_legend', None)
+        try:
+            legend.set_alignment('left') 
+        except AttributeError:
+            legend._legend_box.align = "left"
         if legend is not None:
             new_legend_label = [cov_settings[cov1]['legend_label'].get(label, label) for label in cov_settings[cov1]['sorted_hue_order']]
             for t, l in zip(legend.texts, new_legend_label):
@@ -302,11 +306,10 @@ def plot_pca(
             for handle in legend.legend_handles:
                 handle.set_markersize(10)
             legend.set_title(legend_title_cov1)
-            legend.set_bbox_to_anchor((.975, 1))
+            legend.set_bbox_to_anchor((.975, .90))
             legend.set_frame_on(False)
             legend.set_borderaxespad(0.1)
             legend.set_loc('upper left')
-            legend.set_alignment('left')
     except AttributeError:
         pass
 
@@ -342,17 +345,20 @@ def plot_pca(
         try:
             legend = getattr(fig4, '_legend', None)
             if legend is not None:
+                try:
+                    legend.set_alignment('left') 
+                except AttributeError:
+                    legend._legend_box.align = "left"
                 new_legend_label = [cov_settings[cov2]['legend_label'].get(label, label) for label in cov_settings[cov2]['sorted_hue_order']]
                 for t, l in zip(legend.texts, new_legend_label):
                     t.set_text(l)
                 for handle in legend.legend_handles:
                     handle.set_markersize(10)
-                legend.set_title(legend_title_cov1)
-                legend.set_bbox_to_anchor((.975, 1))
+                legend.set_title(legend_title_cov2)
+                legend.set_bbox_to_anchor((.975, .90))
                 legend.set_frame_on(False)
                 legend.set_borderaxespad(0.1)
                 legend.set_loc('upper left')
-                legend.set_alignment('left')
         except AttributeError:
             pass
 
