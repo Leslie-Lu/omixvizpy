@@ -100,4 +100,4 @@ def test_import():
 def test_version():
     """Test if version is defined."""
     import omixvizpy
-    assert omixvizpy.__version__ == "0.1.1"
+    assert omixvizpy.__version__ == "0.1.2"

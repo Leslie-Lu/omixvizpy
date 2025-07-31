@@ -45,6 +45,8 @@ omixvizpy.plot_pca(
     fig2_name="pc1_vs_pc2",                    # PC1 vs PC2 scatter plot
     fig3_name="pca_by_country",                # Pairplot by first covariate
     fig4_name="pca_by_ethnicity",              # Pairplot by second covariate
+    fig1_size=(11, 9),                           # Size of variance explained plot
+    fig2_size=(12, 12),                         # Size of PC1 vs PC2
     save_figs=True                             # Save figures instead of displaying
 )
 ```
@@ -69,6 +71,8 @@ Create comprehensive PCA visualization plots.
 - `fig2_name` (str): Name for the PC1 vs PC2 scatter plot
 - `fig3_name` (str): Name for the pairplot colored by first covariate
 - `fig4_name` (str): Name for the pairplot colored by second covariate
+- `fig1_size` (Tuple[int, int]): Size of the variance explained plot (default: (11, 9))
+- `fig2_size` (Tuple[int, int]): Size of the PC1 vs PC2 scatter plot (default: (12, 12))
 - `save_figs` (bool): Whether to save the figures (default: False)
 
 **Returns:**

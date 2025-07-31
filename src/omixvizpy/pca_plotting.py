@@ -6,7 +6,7 @@ with customizable covariate-based coloring and styling options.
 
 Author: Zhen Lu
 License: MIT
-Version: 0.1.1
+Version: 0.1.2
 """
 
 from typing import Optional, List, Dict, Any
@@ -21,7 +21,9 @@ import seaborn as sns
 # Set default plotting style for publication quality figures
 plt.rcParams.update({
     "font.family": "sans-serif",
-    "font.sans-serif": ["Arial"]
+    "font.sans-serif": ["Arial"],
+    "legend.fontsize": 12.5,
+    "legend.title_fontsize": 13
 })
 
 def _get_covariate_settings(
@@ -90,6 +92,8 @@ def plot_pca(
     fig2_name: str = 'Scatter_plot_of_PC1_vs_PC2_colored_and_shaped_by_covariates',
     fig3_name: str = 'Scatter_plot_of_PC1-5_colored_and_shaped_by_covariate1',
     fig4_name: str = 'Scatter_plot_of_PC1-5_colored_and_shaped_by_covariate2',
+    fig1_size: tuple = (11, 9),
+    fig2_size: tuple = (12, 12),
     save_figs: bool = False
 ) -> None:
     """
@@ -115,6 +119,8 @@ def plot_pca(
         fig2_name: Filename for the PC1 vs PC2 scatter plot
         fig3_name: Filename for the covariate 1 pairplot
         fig4_name: Filename for the covariate 2 pairplot
+        fig1_size: Size of the variance explained plot
+        fig2_size: Size of the PC1 vs PC2 scatter plot
         save_figs: Whether to save the figures to disk
 
     Returns:
@@ -145,7 +151,7 @@ def plot_pca(
     variance_explained_str1= [f'PC{i+1} ({var:.2f}% of Top {num_of_pcs} PCs)' for i, var in enumerate(variance_explained)]
     variance_explained_str2= [f'PC{i+1} ({var:.2f}%)' for i, var in enumerate(variance_explained)]
     ## fig1: bar plot of variance explained by each PC
-    plt.figure(figsize=(7, 9))
+    plt.figure(figsize= fig1_size)
     ax = plt.gca()
     fig1 = sns.barplot(
         y=list(range(0, num_of_pcs)),
@@ -195,7 +201,7 @@ def plot_pca(
     if cov2 is None:
         cov2 = cov1
         cov_settings[cov2] = cov_settings[cov1]
-    plt.figure(figsize=(10, 10))
+    plt.figure(figsize=fig2_size)
     ax = plt.gca()
     fig2 = sns.scatterplot(data=pca_covar_df,
                            x="PC1",
@@ -306,7 +312,7 @@ def plot_pca(
             for handle in legend.legend_handles:
                 handle.set_markersize(10)
             legend.set_title(legend_title_cov1)
-            legend.set_bbox_to_anchor((.975, .90))
+            legend.set_bbox_to_anchor((1.08, .95))
             legend.set_frame_on(False)
             legend.set_borderaxespad(0.1)
             legend.set_loc('upper left')
@@ -355,7 +361,7 @@ def plot_pca(
                 for handle in legend.legend_handles:
                     handle.set_markersize(10)
                 legend.set_title(legend_title_cov2)
-                legend.set_bbox_to_anchor((.975, .90))
+                legend.set_bbox_to_anchor((1.08, .95))
                 legend.set_frame_on(False)
                 legend.set_borderaxespad(0.1)
                 legend.set_loc('upper left')
